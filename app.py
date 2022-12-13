@@ -6,15 +6,18 @@ from linebot.models import (
     QuickReplyButton, MessageAction, QuickReply,
     FollowEvent,
     )
-
 from dotenv import load_dotenv
+import db
+import os
 
 load_dotenv()
 
 app = Flask(__name__)
 
 CHANNEL_ACCESS_TOKEN = "bqmeLzbJXaUVnqtfy6lznRTO/D7AD9uXvPd4ZNiMk6DyaToLUYSIkK5P9CZjytbvkzTiOFUA3+Wnp4R4RV2sdR6bEJRAIiMEnRW7nj23BPrLwUAiNS4yK5hfBQB6eubVJq/ZeXzOnKRAxVltbaRPDQdB04t89/1O/w1cDnyilFU="
-CHANNEL_SECRET = "68c5e7e9ebb7791271595bbc12fe7561"
+CHANNEL_SECRET = os.getenv("CHANNEL_ACCESS_TOKEN")
+CHANNEL_SECRET = os.getenv("CHANNEL_SECRET")
+
 
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(CHANNEL_SECRET)
@@ -26,7 +29,6 @@ items = [QuickReplyButton(action=MessageAction(label=f"{command}", text=f"{comma
 @app.route("/")
 def hello_world():
   return "deploy check"
-
 
 @app.route("/callback", methods=['POST'])
 def callback():
