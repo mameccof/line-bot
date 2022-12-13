@@ -60,13 +60,11 @@ def handle_follow(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-
-
-  messages = TextSendMessage(text="コマンドを入力",
+  messages = TextSendMessage(text="AAA",
                               quick_reply=QuickReply(items=items))
 
   line_bot_api.reply_message(event.reply_token, messages=messages)
 
 
 if __name__ == "__main__":
-  app.run()
+  app.run(host="0.0.0.0",port=5000)
