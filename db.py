@@ -20,7 +20,7 @@ import mysql.connector
 
 connection = mysql.connector.connect(host='schoolnetdb.database.windows.net',
 
-                                    user='schoolnetadmin',
+                                    user='schoolnetadmin@schoolnetdb',
 
                                     port='1443',
 
